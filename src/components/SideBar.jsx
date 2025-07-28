@@ -78,7 +78,7 @@ export default function SideBar({ selectedCity, setSelectedCity, isCelsius }) {
           getWeather(city.lat, city.lon);
         }}
       />
-      <div className="md:w-[40vw] lg:w-[30vw] h-[100vh] bg-[#1f203a] py-6 ">
+      <div className="w-full h-auto md:w-[40vw] lg:w-[30vw] md:h-[100vh] bg-[#1f203a] py-6 px-4 md:px-11 ">
         <div className="header flex flex-row items-center justify-between px-11">
           <button
             onClick={() => setOpenModal(true)}

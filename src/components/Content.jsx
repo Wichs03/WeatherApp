@@ -136,9 +136,9 @@ export default function Content({ selectedCity, isCelsius, handleUnitChange }) {
   }
 
   return (
-    <div className="md:w-[60vw] lg:w-[70vw] h-[50vh] bg-[#100E1D] py-10">
+    <div className="w-full md:w-[60vw] lg:w-[70vw] h-auto md:h-[50vh] bg-[#100E1D] py-10 px-4 md:px-5">
       <section className="w-full md:px-5">
-        <div className="flex flex-row justify-end items-end h-20 w-64 gap-5 md:max-w-2xl md:w-full">
+        <div className="flex flex-row justify-end items-end h-20 w-64 gap-5 md:max-w-2xl md:w-full mb-6">
           <button
             onClick={() => handleUnitChange("C")}
             className={`w-10 h-10 pr-1 pt-1 text-center text-xl font-bold rounded-full hover:cursor-pointer hover:scale-110 transition-transform duration-200 ease-in-out ${
@@ -161,7 +161,7 @@ export default function Content({ selectedCity, isCelsius, handleUnitChange }) {
           </button>
         </div>
 
-        <ul className="grid grid-cols-2 w-fit mx-auto gap-5 mt-5 md:max-w-2xl md:flex md:flex-row md:flex-wrap md:gap-4 md:w-fit">
+        <ul className="grid grid-cols-2 gap-4 mx-auto md:flex md:flex-row md:flex-wrap md:gap-4 md:w-fit mb-40">
           {forecastDays.length > 0 ? (
             forecastDays.map(({ label, maxTemp, minTemp, icon }, index) => (
               <li

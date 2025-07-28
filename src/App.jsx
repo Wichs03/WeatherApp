@@ -12,13 +12,13 @@ function App() {
   };
 
   return (
-    <div className="flex flex-row">
+    <div className="flex flex-col md:flex-row min-h-screen">
       <SideBar
         selectedCity={selectedCity}
         setSelectedCity={setSelectedCity}
         isCelsius={isCelsius}
       />
-      <div className="flex flex-col">
+      <div className="flex flex-col flex-grow">
         <Content
           selectedCity={selectedCity}
           isCelsius={isCelsius}

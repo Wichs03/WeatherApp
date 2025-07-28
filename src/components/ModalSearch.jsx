@@ -36,7 +36,7 @@ export default function ModalSearch({
   if (!isOpen) return null;
 
   return (
-    <div className="fixed md:w-[40vw] lg:w-[30vw] h-[100vh] bg-[#1f203a] py-6 z-20">
+    <div className="fixed w-[100vw] md:w-[40vw] lg:w-[30vw] h-[100vh] bg-[#1f203a] py-6 z-20">
       <button
         onClick={onClose}
         className="size-7 ml-[85%] hover:cursor-pointer"
