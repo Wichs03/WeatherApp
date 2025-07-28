@@ -40,7 +40,7 @@ const iconsMap = {
   "50n": icon50n,
 };
 
-export default function Content({ selectedCity }) {
+export default function Content({ selectedCity, isCelsius, handleUnitChange }) {
   const [forecastData, setForecastData] = useState(null);
 
   useEffect(() => {
@@ -136,8 +136,31 @@ export default function Content({ selectedCity }) {
   }
 
   return (
-    <div className="md:w-[60vw] lg:w-[70vw] h-[50vh] bg-[#100E1D]">
+    <div className="md:w-[60vw] lg:w-[70vw] h-[50vh] bg-[#100E1D] py-10">
       <section className="w-full md:px-5">
+        <div className="flex flex-row justify-end items-end h-20 w-64 gap-5 md:max-w-2xl md:w-full">
+          <button
+            onClick={() => handleUnitChange("C")}
+            className={`w-10 h-10 pr-1 pt-1 text-center text-xl font-bold rounded-full hover:cursor-pointer ${
+              isCelsius
+                ? "text-[#110E3C] bg-[#E7E7EB]"
+                : "text-[#E7E7EB] bg-[#585676]"
+            }`}
+          >
+            °C
+          </button>
+          <button
+            onClick={() => handleUnitChange("F")}
+            className={`w-10 h-10 pr-1 pt-1 text-center text-xl font-bold rounded-full hover:cursor-pointer ${
+              !isCelsius
+                ? "text-[#110E3C] bg-[#E7E7EB]"
+                : "text-[#E7E7EB] bg-[#585676]"
+            }`}
+          >
+            °F
+          </button>
+        </div>
+
         <ul className="grid grid-cols-2 w-fit mx-auto gap-5 mt-5 md:max-w-2xl md:flex md:flex-row md:flex-wrap md:gap-4 md:w-fit">
           {forecastDays.length > 0 ? (
             forecastDays.map(({ label, maxTemp, minTemp, icon }, index) => (
@@ -154,8 +177,16 @@ export default function Content({ selectedCity }) {
                   />
                 </span>
                 <div className="flex flex-row gap-2 mt-2">
-                  <p>{Math.round(maxTemp)}°C</p>
-                  <p className="text-[#A09FB1]">{Math.round(minTemp)}°C</p>
+                  <p>
+                    {isCelsius
+                      ? `${Math.round(maxTemp)}°C`
+                      : `${Math.round(maxTemp * 1.8 + 32)}°F`}
+                  </p>
+                  <p className="text-[#A09FB1]">
+                    {isCelsius
+                      ? `${Math.round(minTemp)}°C`
+                      : `${Math.round(minTemp * 1.8 + 32)}°F`}
+                  </p>
                 </div>
               </li>
             ))

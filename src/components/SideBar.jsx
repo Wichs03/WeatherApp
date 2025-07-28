@@ -6,7 +6,7 @@ import locationPin from "../assets/icons/location_on.svg";
 import { useState } from "react";
 import ModalSearch from "./ModalSearch";
 
-export default function SideBar({ selectedCity, setSelectedCity }) {
+export default function SideBar({ selectedCity, setSelectedCity, isCelsius }) {
   const [openModal, setOpenModal] = useState(false);
   const [weatherData, setWeatherData] = useState(null);
 
@@ -93,8 +93,16 @@ export default function SideBar({ selectedCity, setSelectedCity }) {
         </div>
         <div className="flex flex-col mt-[25vh] items-center justify-center">
           <h2 className="font-medium text-9xl text-[#E7E7EB]">
-            {weatherData ? Math.round(weatherData.main.temp) : 19}
-            <span>°C</span>{" "}
+            {weatherData
+              ? Math.round(
+                  isCelsius
+                    ? weatherData.main.temp
+                    : weatherData.main.temp * 1.8 + 32
+                )
+              : isCelsius
+              ? 19
+              : Math.round(19 * 1.8 + 32)}
+            <span>{isCelsius ? "°C" : "°F"}</span>
           </h2>
           <h3 className="pt-6 pb-6 text-3xl text-[#A09FB1] font-semibold my-6">
             {weatherData ? weatherData.weather[0].description : "Few Clouds"}
