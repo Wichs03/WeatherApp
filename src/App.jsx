@@ -1,6 +1,7 @@
 import { useState } from "react";
 import SideBar from "./components/SideBar";
 import Content from "./components/Content";
+import WeatherDetails from "./components/WeatherDetails";
 
 function App() {
   const [selectedCity, setSelectedCity] = useState(null);
@@ -12,7 +13,10 @@ function App() {
           selectedCity={selectedCity}
           setSelectedCity={setSelectedCity}
         />
-        <Content selectedCity={selectedCity} />
+        <div className="flex flex-col">
+          <Content selectedCity={selectedCity} />
+          <WeatherDetails />
+        </div>
       </div>
     </>
   );
