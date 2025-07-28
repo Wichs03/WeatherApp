@@ -141,7 +141,7 @@ export default function Content({ selectedCity, isCelsius, handleUnitChange }) {
         <div className="flex flex-row justify-end items-end h-20 w-64 gap-5 md:max-w-2xl md:w-full">
           <button
             onClick={() => handleUnitChange("C")}
-            className={`w-10 h-10 pr-1 pt-1 text-center text-xl font-bold rounded-full hover:cursor-pointer ${
+            className={`w-10 h-10 pr-1 pt-1 text-center text-xl font-bold rounded-full hover:cursor-pointer hover:scale-110 transition-transform duration-200 ease-in-out ${
               isCelsius
                 ? "text-[#110E3C] bg-[#E7E7EB]"
                 : "text-[#E7E7EB] bg-[#585676]"
@@ -151,7 +151,7 @@ export default function Content({ selectedCity, isCelsius, handleUnitChange }) {
           </button>
           <button
             onClick={() => handleUnitChange("F")}
-            className={`w-10 h-10 pr-1 pt-1 text-center text-xl font-bold rounded-full hover:cursor-pointer ${
+            className={`w-10 h-10 pr-1 pt-1 text-center text-xl font-bold rounded-full hover:cursor-pointer hover:scale-110 transition-transform duration-200 ease-in-out ${
               !isCelsius
                 ? "text-[#110E3C] bg-[#E7E7EB]"
                 : "text-[#E7E7EB] bg-[#585676]"

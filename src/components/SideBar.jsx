@@ -49,6 +49,24 @@ export default function SideBar({ selectedCity, setSelectedCity, isCelsius }) {
     return `Today · ${dayName}. ${dayNum} ${monthName}`;
   };
 
+  const handleUseCurrentLocation = () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const { latitude, longitude } = position.coords;
+          getWeather(latitude, longitude);
+          setSelectedCity({ lat: latitude, lon: longitude });
+        },
+        (error) => {
+          console.error("Error getting location:", error);
+          alert("error getting your location, please introduce it manually.");
+        }
+      );
+    } else {
+      alert("Error.");
+    }
+  };
+
   return (
     <>
       <ModalSearch
@@ -64,12 +82,15 @@ export default function SideBar({ selectedCity, setSelectedCity, isCelsius }) {
         <div className="header flex flex-row items-center justify-between px-11">
           <button
             onClick={() => setOpenModal(true)}
-            className="text-white bg-[#6E707A] py-1.5 px-7 hover:cursor-pointer z-10"
+            className="text-white bg-[#6E707A] py-1.5 px-7 hover:cursor-pointer z-10 hover:scale-110 transition-transform duration-200 ease-in-out"
           >
             Search for Places
           </button>
-          <button className="rounded-full bg-white/20 p-2">
-            <img className="size-6" src={location} alt="" />
+          <button
+            className="rounded-full bg-white/20 p-2 hover:cursor-pointer hover:scale-110 transition-transform duration-200 ease-in-out"
+            onClick={handleUseCurrentLocation}
+          >
+            <img className="size-6" src={location} alt="location icon" />
           </button>
         </div>
         <div className="flex relative w-full items-center justify-center mt-30">
