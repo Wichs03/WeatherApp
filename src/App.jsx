@@ -15,7 +15,7 @@ function App() {
         />
         <div className="flex flex-col">
           <Content selectedCity={selectedCity} />
-          <WeatherDetails />
+          <WeatherDetails selectedCity={selectedCity} />
         </div>
       </div>
     </>
