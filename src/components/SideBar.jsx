@@ -78,7 +78,18 @@ export default function SideBar({ selectedCity, setSelectedCity }) {
             src={cloudBackground}
             alt=""
           />
-          <img className="w-40" src={cloud} alt="" />
+          <img
+            className="w-40"
+            src={
+              weatherData
+                ? new URL(
+                    `../assets/weather/${weatherData.weather[0].icon}.png`,
+                    import.meta.url
+                  ).href
+                : cloud
+            }
+            alt="weather icon"
+          />
         </div>
         <div className="flex flex-col mt-[25vh] items-center justify-center">
           <h2 className="font-medium text-9xl text-[#E7E7EB]">
